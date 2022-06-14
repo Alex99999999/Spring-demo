@@ -24,10 +24,20 @@ public class UserController extends HttpServlet {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/get_all_users")
-    public String getAllUsers(Model model) {
+    @Autowired
+    private CommandContainer commandContainer;
+    private Command command;
+
+    @GetMapping("/")
+    public String getAllUsers(@RequestParam(name = "command") String userCommand, Model model) {
         String address = Pages.ERROR_PAGE;
+
+        System.out.println("CommandContainer---------" + commandContainer);
+        System.out.println("RequestParam---------" + userCommand);
+
         try {
+            command = commandContainer.getCommand(userCommand);
+            System.out.println("Command---------" + command);
             address = userService.findAllUsers(model);
         } catch (RuntimeException e) {
             model.addAttribute(GlobalAttributes.MESSAGE, e.getMessage());
@@ -47,60 +57,3 @@ public class UserController extends HttpServlet {
     }
 
 }
-
-
-//    @RequestMapping(method = RequestMethod.GET)
-//    public ModelAndView getMethod(HttpServletRequest req, HttpServletResponse resp) {
-//        System.out.println("CommandContainer ---- " + commandContainer);
-//        System.out.println("Parameter ---- " + req.getParameter(GlobalParams.COMMAND));
-//        String address = Pages.ERROR_PAGE;
-//        ModelAndView modelAndView = new ModelAndView();
-//        try {
-//            command = commandContainer.getCommand(req.getParameter(GlobalParams.COMMAND));
-//            address = command.execute(modelAndView);
-//            System.out.println("Address ---- " + address);
-//            System.out.println("modelAndView ---- " + modelAndView.getModel());
-//        } catch (RuntimeException e) {
-//            modelAndView.addObject(GlobalAttributes.MESSAGE, e.getMessage());
-//        }
-//        modelAndView.setViewName(address);
-//        return modelAndView;
-//    }
-//}
-
-
-//
-//@WebServlet("/user")
-//public class UserController extends HttpServlet {
-//
-//    private CommandContainer commandContainer;
-//    private Command command;
-//
-//    @Override
-//    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-//            throws ServletException, IOException {
-//        commandContainer = (CommandContainer) req.getServletContext().getAttribute(GlobalAttributes.COMMAND_CONTAINER);
-//        String address = Pages.ERROR_PAGE;
-//        try {
-//            command = commandContainer.getCommand(req.getParameter(GlobalParams.COMMAND));
-//            address = command.execute(req);
-//        } catch (RuntimeException e) {
-//            req.getSession().setAttribute(GlobalAttributes.MESSAGE, e.getMessage());
-//        }
-//        req.getRequestDispatcher(address).forward(req, resp);
-//    }
-//
-//    @Override
-//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-//        commandContainer = (CommandContainer) req.getServletContext().getAttribute(GlobalAttributes.COMMAND_CONTAINER);
-//        String address = Pages.ERROR_PAGE;
-//        try {
-//            command = commandContainer.getCommand(req.getParameter(GlobalParams.COMMAND));
-//            address = command.execute(req);
-//        } catch (RuntimeException e) {
-//            req.getSession().setAttribute(GlobalAttributes.MESSAGE, e.getMessage());
-//        }
-//        resp.sendRedirect(address);
-//    }
-//
-//}

@@ -18,7 +18,8 @@
 
         <div class="row center-block text-center">
             <div class="d-grid gap-2 col-6 mx-auto">
-                 <form action="user/get_all_users">
+                 <form action="user/">
+                     <input type="hidden" name="command" value="get_all_users">
                      <button class="btn btn-secondary btn-md btn-block" type="submit">All users</button>
                  </form>
             </div>

@@ -32,8 +32,9 @@
                           </form>
                     </div>
                     <div class="col-4">
-                        <form action="user/get_all_users"  class="d-flex">
+                        <form action="user/">
                               <div class="col-4">
+                                  <input type="hidden" name="command" value="get_all_users">
                                   <button class="btn btn-outline-secondary btn-md btn-block" type="submit">All users</button>
                               </div>
                         </form>

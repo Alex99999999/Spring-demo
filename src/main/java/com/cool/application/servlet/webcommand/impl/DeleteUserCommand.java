@@ -1,13 +1,9 @@
 package com.cool.application.servlet.webcommand.impl;
 
-import com.cool.application.notifications.warnings.messages.UserMessages;
 import com.cool.application.operations.UserOperations;
 import com.cool.application.service.UserService;
-import com.cool.application.servlet.attributes.GlobalAttributes;
-import com.cool.application.servlet.parameters.UserParameters;
 import com.cool.application.servlet.webcommand.Command;
-import com.cool.application.utils.Utils;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
 /**
  * Author Tetiana
@@ -22,7 +18,7 @@ public class DeleteUserCommand implements Command {
     }
 
     @Override
-    public String execute(ModelAndView modelAndView) {
+    public String execute(Model model) {
 //        long id = Utils.parseLong(modelAndView.getParameter(UserParameters.ID));
 //        userService.deleteUser(id);
 //        modelAndView.getSession().setAttribute(GlobalAttributes.MESSAGE, UserMessages.DELETE_SUCCESS);

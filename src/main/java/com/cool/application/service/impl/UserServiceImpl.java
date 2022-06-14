@@ -28,6 +28,11 @@ public class UserServiceImpl implements UserService {
   }
 
   @Override
+  public List<User> findAll() {
+    return userDao.findAllUsers();
+  }
+
+  @Override
   public String findUserById(String id, Model model) {
     return null;
   }

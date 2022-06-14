@@ -1,15 +1,9 @@
 package com.cool.application.servlet.webcommand.impl;
 
-import com.cool.application.notifications.warnings.UserWarnings;
 import com.cool.application.service.UserService;
-import com.cool.application.entity.User;
-import com.cool.application.servlet.attributes.GlobalAttributes;
 import com.cool.application.servlet.pages.Pages;
-import com.cool.application.servlet.parameters.UserParameters;
 import com.cool.application.servlet.webcommand.Command;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.List;
+import org.springframework.ui.Model;
 
 /**
  * Author Bogdan
@@ -24,7 +18,7 @@ public class GetUserByFamilyNameCommand implements Command {
     }
 
     @Override
-    public String execute(ModelAndView modelAndView) {
+    public String execute(Model model) {
 //        String name = modelAndView.getParameter(UserParameters.FAMILY_NAME);
 //        List<User> users = userService.getUserByFamilyName(name);
 //        if (users.size() == 0) {

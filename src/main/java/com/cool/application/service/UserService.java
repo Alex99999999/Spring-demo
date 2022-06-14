@@ -9,6 +9,9 @@ public interface UserService {
 
     String findAllUsers(Model model);
 
+    List<User> findAll();
+
+
     String findUserById(String id, Model model);
 
     String deleteUser(String id, Model model);
