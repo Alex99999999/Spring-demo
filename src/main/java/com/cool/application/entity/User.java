@@ -1,7 +1,6 @@
 package com.cool.application.entity;
 
 import com.cool.application.servlet.parameters.UserParameters;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 @Entity
-@Table(name="user")
+@Table(name="user", schema = "public")
 public class User implements Serializable {
 
     @Id

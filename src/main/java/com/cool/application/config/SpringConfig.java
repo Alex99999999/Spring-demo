@@ -68,10 +68,10 @@ public class SpringConfig {
         return new UserServiceImpl();
     }
 
-    @Bean
-    public UserDao userDao() {
-        return new UserDaoImpl();
-    }
+//    @Bean
+//    public UserDao userDao() {
+//        return new UserDaoImpl();
+//    }
 
     @Bean
     public CommandContainer getCommandContainer() {
@@ -114,7 +114,6 @@ public class SpringConfig {
     public PlatformTransactionManager hibernateTransactionManager() {
         HibernateTransactionManager transactionManager = new HibernateTransactionManager();
         transactionManager.setSessionFactory(sessionFactory().getObject());
-
         return transactionManager;
     }
 

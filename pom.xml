@@ -96,7 +96,6 @@
             <scope>provided</scope>
         </dependency>
 
-
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -122,12 +121,6 @@
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>Spring</artifactId>
-            <version>1.0</version>
-        </dependency>
-
 
     </dependencies>
 
