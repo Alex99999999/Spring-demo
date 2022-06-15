@@ -21,7 +21,7 @@
          <nav class="navbar navbar-light bg-light">
                   <div class="container-fluid">
                       <div class="col-4">
-                            <form action="user" method = "get" class="d-flex">
+                            <form action="/Spring/user/" class="d-flex">
                                 <input type="hidden" name="command" value="get_user_by_family_name">
                                 <div class="col-8">
                                    <input class="form-control me-2" type="text" placeholder="Enter family name" name="family_name">
@@ -76,14 +76,16 @@
             <td class="text-center">${item.familyName}</td>
             <td class="text-center">${item.age}</td>
             <td>
-                <form action="user" method="get">
+                <form action="/Spring/user/">
                     <input type="hidden" name="id" value=${item.id}>
+                     <input type="hidden" name="command" value="get_user_by_id">
                     <button class="btn btn-outline-dark btn-sm btn-block" type="submit">Update</button>
                  </form>
             </td>
             <td>
-                <form action="delete_user" method = "post">
+                <form action="/Spring/user/post" method = "post">
                      <input type="hidden" name="id" value=${item.id}>
+                     <input type="hidden" name="command" value="delete_user">
                      <button class="btn btn-outline-dark btn-sm btn-block" type="submit">Delete</button>
                 </form>
             </td>

@@ -21,7 +21,7 @@
          <nav class="navbar navbar-light bg-light">
                 <div class="container-fluid">
                     <div class="col-4">
-                          <form action="user" method = "get" class="d-flex">
+                          <form action="/Spring/user/" method = "get" class="d-flex">
                               <input type="hidden" name="command" value="get_user_by_family_name">
                               <div class="col-8">
                                  <input class="form-control me-2" type="text" placeholder="Enter family name" name="family_name">
@@ -32,7 +32,7 @@
                           </form>
                     </div>
                     <div class="col-4">
-                        <form action="user/">
+                        <form action="/Spring/user/">
                               <div class="col-4">
                                   <input type="hidden" name="command" value="get_all_users">
                                   <button class="btn btn-outline-secondary btn-md btn-block" type="submit">All users</button>
@@ -48,7 +48,7 @@
     </div>
 
 
-<form action="user" method="post">
+<form action="/Spring/user/post" method="post">
     <table class="table table-striped table-hover">
         <tr>
             <th>Given name</th>

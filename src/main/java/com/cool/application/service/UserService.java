@@ -1,20 +1,12 @@
 package com.cool.application.service;
 
 import com.cool.application.entity.User;
-import org.springframework.ui.Model;
 
 import java.util.List;
 
 public interface UserService {
 
-    String findAllUsers(Model model);
-
-    List<User> findAll();
-
-
-    String findUserById(String id, Model model);
-
-    String deleteUser(String id, Model model);
+    List<User> findAllUsers();
 
     List<User> getUserByFamilyName(String name);
 
@@ -22,4 +14,7 @@ public interface UserService {
 
     void createUser(User user);
 
+    User findById(long id);
+
+    void deleteUser(long id);
 }
