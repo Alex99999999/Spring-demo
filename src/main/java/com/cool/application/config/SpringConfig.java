@@ -8,6 +8,7 @@ import com.cool.application.db.postgres.PostgresDbConnectionProviderImpl;
 import com.cool.application.db.postgres.queries.user.PostgresUserQueries;
 import com.cool.application.service.UserService;
 import com.cool.application.service.impl.UserServiceImpl;
+import com.cool.application.servlet.webcommand.CommandContainer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -48,22 +49,14 @@ public class SpringConfig {
         return new UserDaoImpl();
     }
 
-//    @Bean
-//    public Command getAllUsersCommand () {
-//        return new GetAllUsersCommand();
-//    }
-//
-//    @Bean
-//    public CommandContainer getommandContainer() {
-//         CommandContainer container = new CommandContainer() {
-//            @Override
-//            protected void populateCommands() {
-//                commands = new HashMap<>();
-//                System.out.println("````````````````````````````populating````````````````````````````````");
-//                commands.put(UserOperations.GET_ALL_USERS.getName(), getAllUsersCommand());
-//            }
-//        };
-//        return container;
-//    }
+    @Bean
+    public CommandContainer getCommandContainer() {
+        return new CommandContainer() {
+            @Override
+            protected UserService getUserService() {
+                return userService();
+            }
+        };
+    }
 
 }

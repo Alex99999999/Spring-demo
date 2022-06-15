@@ -3,15 +3,13 @@ package com.cool.application.servlet.webcommand.impl;
 import com.cool.application.entity.User;
 import com.cool.application.service.UserService;
 import com.cool.application.servlet.attributes.GlobalAttributes;
-import com.cool.application.servlet.pages.Pages;
+import com.cool.application.servlet.paths.UserPath;
 import com.cool.application.servlet.parameters.UserParameters;
 import com.cool.application.servlet.webcommand.Command;
 import com.cool.application.utils.Utils;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
-/**
- * Author Dmitriy
- */
+import javax.servlet.http.HttpServletRequest;
 
 public class GetUserByIdCommand implements Command {
 
@@ -22,11 +20,11 @@ public class GetUserByIdCommand implements Command {
     }
 
     @Override
-    public String execute(ModelAndView modelAndView) {
-//        long id = Utils.parseLong(modelAndView.getParameter(UserParameters.ID));
-//        User user = userService.getUserById(id);
-//        modelAndView.setAttribute(GlobalAttributes.USER, user);
-        return Pages.USER_DETAILS_PAGE;
+    public String execute(HttpServletRequest req, Model model) {
+        long id = Utils.parseLong(req.getParameter(UserParameters.ID));
+        User user = userService.findById(id);
+        model.addAttribute(GlobalAttributes.USER, user);
+        return UserPath.USER_DETAILS_PAGE;
     }
 
 }

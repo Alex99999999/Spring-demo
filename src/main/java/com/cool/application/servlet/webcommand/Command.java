@@ -1,9 +1,11 @@
 package com.cool.application.servlet.webcommand;
 
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+
+import javax.servlet.http.HttpServletRequest;
 
 public interface Command {
 
-    String execute(ModelAndView modelAndView);
+    String execute(HttpServletRequest req, Model model);
 
 }

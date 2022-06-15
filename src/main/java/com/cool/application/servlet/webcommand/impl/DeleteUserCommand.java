@@ -5,13 +5,12 @@ import com.cool.application.operations.UserOperations;
 import com.cool.application.service.UserService;
 import com.cool.application.servlet.attributes.GlobalAttributes;
 import com.cool.application.servlet.parameters.UserParameters;
+import com.cool.application.servlet.paths.UserPath;
 import com.cool.application.servlet.webcommand.Command;
 import com.cool.application.utils.Utils;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
 
-/**
- * Author Tetiana
- */
+import javax.servlet.http.HttpServletRequest;
 
 public class DeleteUserCommand implements Command {
 
@@ -22,11 +21,11 @@ public class DeleteUserCommand implements Command {
     }
 
     @Override
-    public String execute(ModelAndView modelAndView) {
-//        long id = Utils.parseLong(modelAndView.getParameter(UserParameters.ID));
-//        userService.deleteUser(id);
-//        modelAndView.getSession().setAttribute(GlobalAttributes.MESSAGE, UserMessages.DELETE_SUCCESS);
-        return String.format("user?command=%s", UserOperations.GET_ALL_USERS.getName());
+    public String execute(HttpServletRequest req, Model model) {
+        long id = Utils.parseLong(req.getParameter(UserParameters.ID));
+        userService.deleteUser(id);
+        req.getSession().setAttribute(GlobalAttributes.MESSAGE, UserMessages.DELETE_SUCCESS);
+        return String.format(UserPath.REDIRECT, UserOperations.GET_ALL_USERS.getName());
     }
 
 }
