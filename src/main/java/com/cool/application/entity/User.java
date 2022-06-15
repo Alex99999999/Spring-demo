@@ -1,22 +1,34 @@
 package com.cool.application.entity;
 
-import org.springframework.lang.Nullable;
+import com.cool.application.servlet.parameters.UserParameters;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 
+@Entity
+@Table(name="user", schema = "public")
 public class User implements Serializable {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Nullable
+    @Column(name = UserParameters.FAMILY_NAME)
     private String familyName;
 
+    @Column(name = UserParameters.GIVEN_NAME)
     private String givenName;
 
-    @Nullable
+    @Column(name = UserParameters.PHONE_NUMBER)
     private String phoneNumber;
 
-    @Nullable
+    @Column(name = UserParameters.AGE)
     private int age;
 
     public User() {
