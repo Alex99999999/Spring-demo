@@ -22,10 +22,8 @@ public class GetAllUsersCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest req,  Model model) {
-        System.out.println("UserService----" + userService);
         List<User> users = userService.findAllUsers();
         model.addAttribute(GlobalAttributes.USER_LIST, users);
-        System.out.println("AGAIN GetAllUsersCommand-----");
         model.addAttribute(GlobalAttributes.USER_LIST, users);
         return UserPath.SHOW_ALL_USERS;
     }

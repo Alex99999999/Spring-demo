@@ -31,17 +31,25 @@
                                 </div>
                             </form>
                       </div>
-                      <div class="col-4">
+                      <div class="col-2">
                            <form action="/Spring" class="d-flex">
-                                 <div class="col-4">
+                                 <div class="col-6">
                                      <button class="btn btn-outline-secondary btn-md btn-block" type="submit">Home</button>
                                  </div>
                            </form>
                       </div>
-                      <div class="col-4">
-                                 <div class="col-4">
+                      <div class="col-2">
+                          <form action="/Spring/user/">
+                                <div class="col-6">
+                                    <input type="hidden" name="command" value="get_all_users">
+                                    <button class="btn btn-outline-secondary btn-md btn-block" type="submit">All users</button>
+                                </div>
+                          </form>
+                      </div>
+                      <div class="col-2">
+                                 <div class="col-6">
                                      <a href="/Spring/show_user_details.jsp">
-                                         <button class="btn btn-outline-dark btn-sm btn-block" type="submit">Create user</button>
+                                         <button class="btn btn-outline-secondary btn-md btn-block" type="submit">Create user</button>
                                     </a>
                                  </div>
                       </div>

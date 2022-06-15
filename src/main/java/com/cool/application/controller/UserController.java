@@ -35,13 +35,9 @@ public class UserController extends HttpServlet {
     private String processRequest(HttpServletRequest req, Model model) {
         String address = UserPath.ERROR_PAGE;
         String userCommand = req.getParameter(GlobalParams.COMMAND);
-        System.out.println("CommandContainer---------" + commandContainer);
-        System.out.println("RequestParam---------" + userCommand);
-
         try {
             Command command = commandContainer.getCommand(userCommand);
             address = command.execute(req, model);
-            System.out.println("Command---------" + command);
         } catch (RuntimeException e) {
             model.addAttribute(GlobalAttributes.MESSAGE, e.getMessage());
         }
