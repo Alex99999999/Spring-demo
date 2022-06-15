@@ -20,7 +20,6 @@ public class UserRepository implements UserDao {
     @Transactional
     @Override
     public List<User> findAllUsers() {
-//        Session session = sessionFactory.getCurrentSession();
         Session session = sessionFactory.openSession();
         List<User> users =  session.createQuery("SELECT u FROM User u", User.class)
                 .getResultList();
@@ -37,15 +36,11 @@ public class UserRepository implements UserDao {
         }
         Session session = sessionFactory.getCurrentSession();
         session.delete(getUserById(id));
-//        session.createQuery("DELETE from User WHERE id =: userId")
-//                .setParameter("userId", id)
-//                .executeUpdate();
     }
 
     @Transactional
     @Override
     public User getUserById(long id) {
-//        Session session = sessionFactory.getCurrentSession();
         Session session = sessionFactory.openSession();
         User user =  session.get(User.class, id);
         session.close();
@@ -55,7 +50,6 @@ public class UserRepository implements UserDao {
     @Transactional
     @Override
     public List<User> getUserByFamilyName(String name) {
-//        Session session = sessionFactory.getCurrentSession();
         Session session = sessionFactory.openSession();
         List<User> users = session.createQuery("SELECT u FROM User u WHERE family_name =: familyName", User.class)
                 .setParameter("familyName", name)
@@ -72,13 +66,6 @@ public class UserRepository implements UserDao {
         }
         Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(user);
-//        session.createQuery("UPDATE User SET family_name =: familyName, given_name =: givenName, phone_number =: phoneNumber, age =: age WHERE id =: userId")
-//                .setParameter("familyName", user.getFamilyName())
-//                .setParameter("givenName", user.getGivenName())
-//                .setParameter("phoneNumber", user.getPhoneNumber())
-//                .setParameter("age", user.getAge())
-//                .setParameter("userId", user.getId())
-//                .executeUpdate();
     }
 
     @Transactional
@@ -89,12 +76,6 @@ public class UserRepository implements UserDao {
         }
         Session session = sessionFactory.getCurrentSession();
         session.save(user);
-//        session.createQuery("INSERT INTO User SET (family_name, given_name, phone_number, age)")
-//                .setParameter("familyName", user.getFamilyName())
-//                .setParameter("givenName", user.getGivenName())
-//                .setParameter("phoneNumber", user.getPhoneNumber())
-//                .setParameter("age", user.getAge())
-//                .executeUpdate();
     }
 
     private boolean isExist(long id) {

@@ -80,7 +80,6 @@ public class SpringConfig {
         sessionFactory.setDataSource(dataSource());
         sessionFactory.setPackagesToScan("com.cool.application.entity");
         sessionFactory.setHibernateProperties(hibernateProperties());
-
         return sessionFactory;
     }
 
